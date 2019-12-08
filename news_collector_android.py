@@ -230,6 +230,7 @@ while flag is False:
         foo = str(xcmd_process[i])
         bar = "/proc/"+foo
         if os.path.exists(bar) is True:
+            print('testing alive')
             pass
         else:
             print('died:', xcmd_process[i])
