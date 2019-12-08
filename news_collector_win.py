@@ -17,6 +17,17 @@
 import subprocess
 import distutils.dir_util
 import psutil
+import time
+
+print('[1] once')
+print('[2] loop')
+user_input = input('Would you like to run once or loop? ')
+if user_input is '2':
+    user_input_2 = input('Please enter in minutes the time interval between each loop: ')
+    if user_input_2.isdigit():
+        print('loop will be every:', user_input_2, 'minutes.')
+        user_input_2 = int(user_input_2)
+        user_input_2 = user_input_2 * 60
 
 flag = False
 xcmd_process = []
@@ -227,32 +238,64 @@ def funk18():
     print('subprocess PID :', xcmd_pid)
 
 
-funk1()
-funk2()
-funk3()
-funk4()
-funk5()
-funk6()
-funk7()
-funk8()
-funk9()
-funk10()
-funk11()
-funk12()
-funk13()
-funk14()
-funk15()
-funk16()
-funk17()
-funk18()
+if user_input is '1':
+    funk1()
+    funk2()
+    funk3()
+    funk4()
+    funk5()
+    funk6()
+    funk7()
+    funk8()
+    funk9()
+    funk10()
+    funk11()
+    funk12()
+    funk13()
+    funk14()
+    funk15()
+    funk16()
+    funk17()
+    funk18()
+    while flag is False:
+        i = 0
+        for xcmd_processs in xcmd_process:
+            if psutil.pid_exists(xcmd_process[i]) is True:
+                pass
+            else:
+                del xcmd_process[i]
+                if len(xcmd_process) is 0:
+                    flag = True
+            i += 1
 
-while flag is False:
-    i = 0
-    for xcmd_processs in xcmd_process:
-        if psutil.pid_exists(xcmd_process[i]) is True:
-            pass
-        else:
-            del xcmd_process[i]
-            if len(xcmd_process) is 0:
-                flag = True
-        i += 1
+elif user_input is '2':
+    while True:
+        funk1()
+        funk2()
+        funk3()
+        funk4()
+        funk5()
+        funk6()
+        funk7()
+        funk8()
+        funk9()
+        funk10()
+        funk11()
+        funk12()
+        funk13()
+        funk14()
+        funk15()
+        funk16()
+        funk17()
+        funk18()
+        while flag is False:
+            i = 0
+            for xcmd_processs in xcmd_process:
+                if psutil.pid_exists(xcmd_process[i]) is True:
+                    pass
+                else:
+                    del xcmd_process[i]
+                    if len(xcmd_process) is 0:
+                        flag = True
+                i += 1
+        time.sleep(user_input_2)

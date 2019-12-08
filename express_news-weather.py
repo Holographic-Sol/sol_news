@@ -19,6 +19,7 @@ import codecs
 import requests
 from bs4 import BeautifulSoup
 import distutils.dir_util
+import shutil
 
 dat_dir = './news_articles/'
 distutils.dir_util.mkpath(dat_dir)
@@ -28,9 +29,10 @@ encode = u'\u5E73\u621015\u200e'
 href_data = []
 title_data = []
 
+dat_file_tmp = './news_articles/express_news-weather_tmp.txt'
 dat_file = './news_articles/express_news-weather.txt'
 
-open(dat_file, 'w').close()
+open(dat_file_tmp, 'w').close()
 
 url = 'https://www.express.co.uk/news/weather'
 print('searching', url)
@@ -50,7 +52,7 @@ for link in soup.find_all('a'):
 i = 0
 for href_datas in href_data:
     url = href_data[i]
-    with codecs.open(dat_file, 'a', encoding="UTF-8") as fo:
+    with codecs.open(dat_file_tmp, 'a', encoding="UTF-8") as fo:
         fo.write('\n'+url)
     fo.close()
     print('searching', url)
@@ -60,7 +62,11 @@ for href_datas in href_data:
     for row in soup.find_all('p'):
         text = row.get_text()
         if text is not None:
-            with codecs.open(dat_file, 'a', encoding="UTF-8") as fo:
+            with codecs.open(dat_file_tmp, 'a', encoding="UTF-8") as fo:
                 fo.write(text+'\n')
             fo.close()
     i += 1
+
+if i is len(href_data):
+    shutil.copy(dat_file_tmp, dat_file)
+    os.remove(dat_file_tmp)
