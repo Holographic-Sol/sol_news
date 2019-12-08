@@ -2,6 +2,10 @@ import os
 import codecs
 import requests
 from bs4 import BeautifulSoup
+import distutils.dir_util
+
+dat_dir = './news_articles/'
+distutils.dir_util.mkpath(dat_dir)
 
 encode = u'\u5E73\u621015\u200e'
 
@@ -34,10 +38,14 @@ for link in soup.find_all('a'):
                'https://www.techradar.com/uk/news/computing',
                'https://www.techradar.com/uk/digital-transformation',
                'https://www.techradar.com/uk/news/digital-home',
-               'https://www.techradar.com/uk/pro/mobile-industry']
+               'https://www.techradar.com/uk/pro/mobile-industry',
+               'https://www.techradar.com/uk/news/vpn',
+               'https://www.techradar.com/uk/news/gaming',
+               'https://www.techradar.com/uk/news/disney-plus-shows-movies-sign-up']
     if href is not None and href.startswith('https://www.techradar.com/uk') and href not in exclude:
         print(href)
-        href_data.append(href)
+        if href not in href_data:
+            href_data.append(href)
 
 i = 0
 for href_datas in href_data:

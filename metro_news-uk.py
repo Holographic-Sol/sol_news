@@ -3,6 +3,10 @@ import codecs
 import requests
 from datetime import datetime
 from bs4 import BeautifulSoup
+import distutils.dir_util
+
+dat_dir = './news_articles/'
+distutils.dir_util.mkpath(dat_dir)
 
 date_today = datetime.today().strftime('%Y-%m-%d')
 
@@ -33,7 +37,8 @@ for link in soup.find_all('a'):
     if href is not None and href.startswith(search_str_today) or \
             href is not None and href.startswith(search_str_yesterday):
         print(href)
-        href_data.append(href)
+        if href not in href_data:
+            href_data.append(href)
 
 i = 0
 for href_datas in href_data:

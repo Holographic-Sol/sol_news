@@ -2,6 +2,10 @@ import os
 import codecs
 import requests
 from bs4 import BeautifulSoup
+import distutils.dir_util
+
+dat_dir = './news_articles/'
+distutils.dir_util.mkpath(dat_dir)
 
 encode = u'\u5E73\u621015\u200e'
 
@@ -19,10 +23,12 @@ data = rHead.text
 soup = BeautifulSoup(data, "html.parser")
 for link in soup.find_all('a'):
     href = link.get('href')
-    if href is not None and href.startswith('/news/weather'):
+    if href is not None and href.startswith('/news/weather') and \
+            href != '/entertainment/weather':
         article_url = 'https://www.express.co.uk' + href
         print(article_url)
-        href_data.append(article_url)
+        if article_url not in href_data:
+            href_data.append(article_url)
 
 
 i = 0

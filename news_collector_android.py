@@ -1,4 +1,8 @@
 import subprocess
+import distutils.dir_util
+
+dat_dir = './news_articles/'
+distutils.dir_util.mkpath(dat_dir)
 
 crawler = ['somersetlive_somerset-news.py',
            'express_news-world.py',

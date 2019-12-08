@@ -22,7 +22,8 @@ for link in soup.find_all('a'):
     if href is not None and href.startswith('/news/article-'):
         href = 'https://www.dailymail.co.uk'+href
         print(href)
-        href_data.append(href)
+        if href not in href_data:
+            href_data.append(href)
 
 i = 0
 for href_datas in href_data:
