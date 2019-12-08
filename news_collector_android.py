@@ -229,9 +229,9 @@ while flag is False:
     for xcmd_processs in xcmd_process:
         foo = str(xcmd_process[i])
         bar = "/proc/"+foo
-        print(xcmd_process[i])
-        print(bar)
-        print(os.getpid())
+        print('xcdm_process pid:', xcmd_process[i])
+        print('bar pid:', bar)
+        print('current pid', os.getpid())
         if os.path.exists(bar) is True:
             print('testing alive')
             pass
