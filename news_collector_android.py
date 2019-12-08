@@ -227,10 +227,12 @@ funk10()
 while flag is False:
     i = 0
     for xcmd_processs in xcmd_process:
-        if os.path.exists(xcmd_process[i]) is True:
-            print('still running', xcmd_process[i])
+        path_str = str('/proc/'+xcmd_process[i])
+        if os.path.exists(path_str) is True:
+            print('still running', path_str)
             pass
         else:
+            print('died:', path_str)
             del xcmd_process[i]
             if len(xcmd_process) is 0:
                 flag = True
