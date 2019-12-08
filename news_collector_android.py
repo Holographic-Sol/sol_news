@@ -214,7 +214,7 @@ def funk18():
 # funk7()
 # funk8()
 # funk9()
-# funk10()
+funk10()
 funk11()
 # funk12()
 # funk13()
