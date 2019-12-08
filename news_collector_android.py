@@ -205,43 +205,35 @@ def funk18():
     print('subprocess PID :', xcmd_pid)
 
 
-# funk1()
-# funk2()
-# funk3()
-# funk4()
-# funk5()
-# funk6()
-# funk7()
-# funk8()
-# funk9()
+funk1()
+funk2()
+funk3()
+funk4()
+funk5()
+funk6()
+funk7()
+funk8()
+funk9()
 funk10()
 funk11()
-# funk12()
-# funk13()
-# funk14()
-# funk15()
-# funk16()
-# funk17()
-# funk18()
+funk12()
+funk13()
+funk14()
+funk15()
+funk16()
+funk17()
+funk18()
 
 while flag is False:
     i = 0
     for xcmd_processs in xcmd_process:
         foo = str(xcmd_process[i])
         bar = "/proc/"+foo
-        print('xcdm_process pid:', xcmd_process[i])
-        print('bar pid:', bar)
-        print('current pid', os.getpid())
         if os.path.exists(bar) is True:
-            # get the name of suspected second pid [careful handling]
             p3 = subprocess.Popen(["ps -o cmd= {}".format(xcmd_process[i])], stdout=subprocess.PIPE, shell=True)
             found_pid_name = str(p3.communicate()[0])
-            found_pid_name = found_pid_name.replace("b'", "")
-            found_pid_name = found_pid_name.replace("\\n'", "")
-            print(found_pid_name)
             pass
         elif not os.path.exists(bar):
-            print('died:', xcmd_process[i])
             del xcmd_process[i]
             if len(xcmd_process) is 0:
                 flag = True
