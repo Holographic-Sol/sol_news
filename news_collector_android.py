@@ -229,10 +229,12 @@ while flag is False:
     for xcmd_processs in xcmd_process:
         foo = str(xcmd_process[i])
         bar = "/proc/"+foo
+        print(xcmd_process[i])
+        print(bar)
         if os.path.exists(bar) is True:
             print('testing alive')
             pass
-        else:
+        elif os.path.exists(bar) is False:
             print('died:', xcmd_process[i])
             del xcmd_process[i]
             if len(xcmd_process) is 0:
