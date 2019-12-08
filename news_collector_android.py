@@ -233,7 +233,12 @@ while flag is False:
         print('bar pid:', bar)
         print('current pid', os.getpid())
         if os.path.exists(bar) is True:
-            print('testing alive')
+            # get the name of suspected second pid [careful handling]
+            p3 = subprocess.Popen(["ps -o cmd= {}".format(xcmd_process[i])], stdout=subprocess.PIPE, shell=True)
+            found_pid_name = str(p3.communicate()[0])
+            found_pid_name = found_pid_name.replace("b'", "")
+            found_pid_name = found_pid_name.replace("\\n'", "")
+            print(found_pid_name)
             pass
         elif not os.path.exists(bar):
             print('died:', xcmd_process[i])
