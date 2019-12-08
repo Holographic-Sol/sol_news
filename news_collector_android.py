@@ -227,7 +227,8 @@ funk11()
 while flag is False:
     i = 0
     for xcmd_processs in xcmd_process:
-        if os.path.exists("/proc/"+xcmd_process[i]) is True:
+        foo = "/proc/"+xcmd_process[i]
+        if os.path.exists(foo) is True:
             pass
         else:
             print('died:', xcmd_process[i])
