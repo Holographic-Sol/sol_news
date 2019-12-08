@@ -234,7 +234,7 @@ while flag is False:
         if os.path.exists(bar) is True:
             print('testing alive')
             pass
-        elif os.path.exists(bar) is False:
+        elif not os.path.exists(bar):
             print('died:', xcmd_process[i])
             del xcmd_process[i]
             if len(xcmd_process) is 0:
