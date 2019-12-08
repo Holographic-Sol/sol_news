@@ -1,18 +1,8 @@
 import subprocess
 import distutils.dir_util
-import psutil
-
-dat_file_0 = './data.dat'
-if not os.path.exists(dat_file_0):
-    open(dat_file_0, 'w').close()
 
 flag = False
 xcmd_process = []
-
-# Subprocess Info
-info = subprocess.STARTUPINFO()
-info.dwFlags = 1
-info.wShowWindow = 0
 
 dat_dir = './news_articles'
 distutils.dir_util.mkpath(dat_dir)
