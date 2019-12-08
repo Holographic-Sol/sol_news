@@ -229,7 +229,7 @@ while flag is False:
     for xcmd_processs in xcmd_process:
         foo = str(xcmd_process[i])
         bar = "/proc/"+foo
-        if os.path.exists(foo) is True:
+        if os.path.exists(bar) is True:
             pass
         else:
             print('died:', xcmd_process[i])
