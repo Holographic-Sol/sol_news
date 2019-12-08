@@ -214,10 +214,10 @@ def funk18():
 # funk7()
 # funk8()
 # funk9()
-# funk10()
+funk10()
 # funk11()
 # funk12()
-funk13()
+# funk13()
 # funk14()
 # funk15()
 # funk16()
@@ -228,6 +228,7 @@ while flag is False:
     i = 0
     for xcmd_processs in xcmd_process:
         if os.path.exists(xcmd_process[i]) is True:
+            print('still running', xcmd_process[i])
             pass
         else:
             del xcmd_process[i]
