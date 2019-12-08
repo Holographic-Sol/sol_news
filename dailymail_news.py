@@ -1,3 +1,19 @@
+##                GNU General Public License version 3                          ##
+##    Sony Bravia Remote by Benjamin Jack Cullen Copyright (C) 2017             ##
+##                                                                              ##
+##    This program is free software: you can redistribute it and/or modify      ##
+##    it under the terms of the GNU General Public License as published by      ##
+##    the Free Software Foundation, either version 3 of the License, or         ##
+##    (at your option) any later version.                                       ##
+##                                                                              ##
+##    This program is distributed in the hope that it will be useful,           ##
+##    but WITHOUT ANY WARRANTY; without even the implied warranty of            ##
+##    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the              ##
+##    GNU General Public License for more details.                              ##
+##                                                                              ##
+##    You should have received a copy of the GNU General Public License         ##
+##    along with this program.  If not, see <http://www.gnu.org/licenses/>.     ##
+
 import os
 import codecs
 import requests
@@ -8,8 +24,11 @@ encode = u'\u5E73\u621015\u200e'
 href_data = []
 title_data = []
 
-dat_file = './news_articles/dailymail_news.txt'
+dat_file_0 = './data.dat'
+if not os.path.exists(dat_file_0):
+    open(dat_file_0, 'w').close()
 
+dat_file = './news_articles/dailymail_news.txt'
 open(dat_file, 'w').close()
 
 url = 'https://www.dailymail.co.uk/news'
@@ -42,3 +61,7 @@ for href_datas in href_data:
                 fo.write(text+'\n')
             fo.close()
     i += 1
+
+with open(dat_file_0, 'a') as fo:
+    fo.write('dailymail_news done')
+    fo.close()
