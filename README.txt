@@ -3,7 +3,7 @@ The news without signing your life away.
 Make more crawlers for sites currently allowing web crawler activity.
 This is currently a 5 minute program i made drinking coffee, i will refine it a little
 but not much. Why? because things change. And id just like to read the news in my terminal
-or notepad.
+or notepad without being data raped. come on.. ad's are enough.
 
 Windows:
 1. On Windows run news_collector.bat
