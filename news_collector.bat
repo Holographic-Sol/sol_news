@@ -1,0 +1,1 @@
+python news_collector_win.py

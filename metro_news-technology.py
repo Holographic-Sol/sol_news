@@ -1,0 +1,51 @@
+import os
+import codecs
+import requests
+from datetime import datetime
+from bs4 import BeautifulSoup
+
+date_today = datetime.today().strftime('%Y-%m-%d')
+
+encode = u'\u5E73\u621015\u200e'
+
+href_data = []
+title_data = []
+
+dat_file = './news_articles/metro_news-tech.txt'
+
+open(dat_file, 'w').close()
+
+url = 'https://www.metro.co.uk/news/tech'
+print('searching', url)
+rHead = requests.get(url)
+data = rHead.text
+soup = BeautifulSoup(data, "html.parser")
+for link in soup.find_all('a'):
+    href = link.get('href')
+    dt = date_today.replace('-', '/')
+    search_str_today = 'https://metro.co.uk/'+dt
+    search_str_yesterday = 'https://metro.co.uk/'+dt
+    idx = search_str_yesterday.rfind('/')
+    search_str_yesterday = search_str_yesterday[:idx]
+    if href is not None and href.startswith(search_str_today) or \
+            href is not None and href.startswith(search_str_yesterday):
+        print(href)
+        href_data.append(href)
+
+i = 0
+for href_datas in href_data:
+    url = href_data[i]
+    with codecs.open(dat_file, 'a', encoding="UTF-8") as fo:
+        fo.write('\n'+url)
+    fo.close()
+    print('searching', url)
+    rHead = requests.get(url)
+    data = rHead.text
+    soup = BeautifulSoup(data, "html.parser")
+    for row in soup.find_all('p'):
+        text = row.get_text()
+        if text is not None:
+            with codecs.open(dat_file, 'a', encoding="UTF-8") as fo:
+                fo.write(text+'\n')
+            fo.close()
+    i += 1
