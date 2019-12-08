@@ -1,3 +1,4 @@
+import os
 import subprocess
 import distutils.dir_util
 
@@ -226,10 +227,10 @@ funk13()
 while flag is False:
     i = 0
     for xcmd_processs in xcmd_process:
-    #     if psutil.pid_exists(xcmd_process[i]) is True:
-    #         pass
-    #     else:
-    #         del xcmd_process[i]
-    #         if len(xcmd_process) is 0:
-    #             flag = True
+        if os.path.exists(xcmd_process[i]) is True:
+            pass
+        else:
+            del xcmd_process[i]
+            if len(xcmd_process) is 0:
+                flag = True
         i += 1
