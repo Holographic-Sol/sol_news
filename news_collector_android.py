@@ -214,8 +214,8 @@ def funk18():
 # funk7()
 # funk8()
 # funk9()
-funk10()
-# funk11()
+# funk10()
+funk11()
 # funk12()
 # funk13()
 # funk14()
@@ -227,12 +227,10 @@ funk10()
 while flag is False:
     i = 0
     for xcmd_processs in xcmd_process:
-        path_str = str('/proc/'+xcmd_process[i])
-        if os.path.exists(path_str) is True:
-            print('still running', path_str)
+        if os.path.exists("/proc/"+xcmd_process[i]) is True:
             pass
         else:
-            print('died:', path_str)
+            print('died:', xcmd_process[i])
             del xcmd_process[i]
             if len(xcmd_process) is 0:
                 flag = True
