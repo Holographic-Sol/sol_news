@@ -1,4 +1,3 @@
-import os
 import codecs
 import requests
 from bs4 import BeautifulSoup
@@ -19,11 +18,10 @@ data = rHead.text
 soup = BeautifulSoup(data, "html.parser")
 for link in soup.find_all('a'):
     href = link.get('href')
-    if href is not None and href.startswith('https://www.somersetlive.co.uk/news/somerset-news/') and \
-            href != 'https://www.somersetlive.co.uk/news/somerset-news/':
-        if href not in href_data:
-            print(href)
-            href_data.append(href)
+    if href is not None and href.startswith('https://www.somersetlive.co.uk/news/somerset-news/') \
+            and href != 'https://www.somersetlive.co.uk/news/somerset-news/':
+        print(href)
+        href_data.append(href)
 
 i = 0
 for href_datas in href_data:
