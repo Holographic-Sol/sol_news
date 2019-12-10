@@ -18,6 +18,8 @@ article = []
 dat_file_tmp = './news_articles/bbc_news-world_tmp.txt'
 dat_file = './news_articles/bbc_news-world.txt'
 
+open(dat_file_tmp, 'w').close()
+
 url = 'https://www.bbc.co.uk/news/world'
 
 print('searching', url)
@@ -27,10 +29,6 @@ soup = BeautifulSoup(data, "html.parser")
 for link in soup.find_all('a'):
     href = link.get('href')
     if href is not None and href.startswith('/news/world-'):
-        # article_url = 'https://www.express.co.uk' + href
-        # print(article_url)
-        # if article_url not in href_data:
-        #     href_data.append(article_url)
         cat_title_data.append(href)
         # print(href)
 print(len(cat_title_data))
@@ -46,16 +44,8 @@ for cat_title_datas in cat_title_data:
     for link in soup.find_all('a'):
         href = link.get('href')
         if href is not None and href.startswith('/news/world-'):
-            # article_url = 'https://www.express.co.uk' + href
-            # print(article_url)
-            # if article_url not in href_data:
-            #     href_data.append(article_url)
-            # cat_title_data.append(href)
-            # print(href)
             article.append(href)
     i += 1
-
-open(dat_file_tmp, 'w').close()
 
 i = 0
 for articles in article:

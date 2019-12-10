@@ -13,7 +13,7 @@ encode = u'\u5E73\u621015\u200e'
 href_data = []
 title_data = []
 
-dat_file_tmp = './news_articles/express_entertainment-films_tmp.txt'
+dat_file_tmp = './news_articles/bbc_explore_tmp.txt'
 dat_file = './news_articles/express_entertainment-films.txt'
 
 open(dat_file_tmp, 'w').close()

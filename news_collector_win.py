@@ -239,6 +239,25 @@ def funk18():
     xcmd_process.append(xcmd_pid)
     print('subprocess PID :', xcmd_pid)
 
+def funk19():
+    var = crawler[18]
+    cmd = 'python ' + var
+    print('running command:', cmd)
+    xcmd = subprocess.Popen(cmd, shell=False, startupinfo=info)
+    xcmd_pid = xcmd.pid
+    xcmd_process.append(xcmd_pid)
+    print('subprocess PID :', xcmd_pid)
+
+
+def funk20():
+    var = crawler[19]
+    cmd = 'python ' + var
+    print('running command:', cmd)
+    xcmd = subprocess.Popen(cmd, shell=False, startupinfo=info)
+    xcmd_pid = xcmd.pid
+    xcmd_process.append(xcmd_pid)
+    print('subprocess PID :', xcmd_pid)
+
 
 if user_input is '1':
     funk1()
