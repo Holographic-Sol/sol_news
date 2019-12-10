@@ -41,6 +41,8 @@ dat_dir = './news_articles'
 distutils.dir_util.mkpath(dat_dir)
 
 crawler = ['somersetlive_somerset-news.py',
+           'sky_news-world.py',
+           'bbc_news.py',
            'express_news-world.py',
            'express_news-uk.py',
            'techradar_uk-news.py',
