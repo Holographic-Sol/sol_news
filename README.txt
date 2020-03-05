@@ -16,3 +16,5 @@ More crawlers is more news.
 
 I will refine it a little but not much. Why? because html changes. And id just like to read the news in my terminal
 or notepad without being data raped. come on.. ad's are enough.
+
+If Sol News is always running then you always have somewhere to turn for a clue if it all goes bad, Sol News.
