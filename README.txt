@@ -15,5 +15,4 @@ Android:
 2. git clone https://github.com/Holographic-Sol/sol_news
 3. cd sol_news (into directory containing news_collector_android.py)
 4. python news_collector_android.py
-5. Note - If the android collector hangs then just run a desired crawler individually!
 6. cat the article file
