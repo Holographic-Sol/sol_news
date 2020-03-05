@@ -18,25 +18,42 @@ encode = u'\u5E73\u621015\u200e'
 
 href_data = []
 title_data = []
+cat_title_data = []
+article = []
 
-dat_file = dat_dir + '/sky_news-world_' + tm_stamp + '.txt'
+dat_file = dat_dir + '/bbc_news-world_' + tm_stamp + '.txt'
 
-url = 'https://news.sky.com/world'
+url = 'https://www.bbc.co.uk/news/world'
+
 print('searching', url)
 rHead = requests.get(url)
 data = rHead.text
 soup = BeautifulSoup(data, "html.parser")
 for link in soup.find_all('a'):
     href = link.get('href')
-    if href is not None and href.startswith('/story/'):
-        print(href)
-        if href not in href_data:
-            href_data.append(href)
+    if href is not None and href.startswith('/news/world-'):
+        cat_title_data.append(href)
+        # print(href)
+print(len(cat_title_data))
 
 i = 0
-for href_datas in href_data:
-    url = href_data[i]
-    url = 'https://news.sky.com/'+url
+for cat_title_datas in cat_title_data:
+    url = cat_title_data[i]
+    url = 'https://www.bbc.co.uk'+url
+    print('searching', url)
+    rHead = requests.get(url)
+    data = rHead.text
+    soup = BeautifulSoup(data, "html.parser")
+    for link in soup.find_all('a'):
+        href = link.get('href')
+        if href is not None and href.startswith('/news/world-'):
+            article.append(href)
+    i += 1
+
+i = 0
+for articles in article:
+    url = article[i]
+    url = 'https://www.bbc.co.uk'+article[i]
     with codecs.open(dat_file, 'a', encoding="UTF-8") as fo:
         fo.write('\n'+url)
     fo.close()
@@ -46,10 +63,9 @@ for href_datas in href_data:
     soup = BeautifulSoup(data, "html.parser")
     for row in soup.find_all('p'):
         text = row.get_text()
-        print(text)
         if text is not None:
+            # print(text)
             with codecs.open(dat_file, 'a', encoding="UTF-8") as fo:
                 fo.write(text+'\n')
             fo.close()
     i += 1
-
