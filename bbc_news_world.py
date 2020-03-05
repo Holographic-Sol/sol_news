@@ -34,7 +34,6 @@ for link in soup.find_all('a'):
     if href is not None and href.startswith('/news/world-'):
         cat_title_data.append(href)
         # print(href)
-print(len(cat_title_data))
 
 i = 0
 for cat_title_datas in cat_title_data:

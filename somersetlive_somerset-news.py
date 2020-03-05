@@ -19,16 +19,18 @@ encode = u'\u5E73\u621015\u200e'
 href_data = []
 title_data = []
 
-dat_file = dat_dir + '/sky_news-world_' + tm_stamp + '.txt'
+dat_file = dat_dir + '/somersetlive_somerset-news_' + tm_stamp + '.txt'
 
-url = 'https://news.sky.com/world'
+url = 'https://www.somersetlive.co.uk/news/somerset-news/'
 print('searching', url)
 rHead = requests.get(url)
 data = rHead.text
 soup = BeautifulSoup(data, "html.parser")
 for link in soup.find_all('a'):
     href = link.get('href')
-    if href is not None and href.startswith('/story/'):
+    if href is not None and href.startswith('https://www.somersetlive.co.uk/news/somerset-news/') \
+            and href != 'https://www.somersetlive.co.uk/news/somerset-news/' and \
+            not href.startswith('https://www.somersetlive.co.uk/news/somerset-news/?pageNumber='):
         print(href)
         if href not in href_data:
             href_data.append(href)
@@ -36,7 +38,6 @@ for link in soup.find_all('a'):
 i = 0
 for href_datas in href_data:
     url = href_data[i]
-    url = 'https://news.sky.com/'+url
     with codecs.open(dat_file, 'a', encoding="UTF-8") as fo:
         fo.write('\n'+url)
     fo.close()
@@ -51,4 +52,5 @@ for href_datas in href_data:
                 fo.write(text+'\n')
             fo.close()
     i += 1
+
 
