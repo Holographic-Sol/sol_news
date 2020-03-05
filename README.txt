@@ -12,7 +12,7 @@ Android:
 4. python news_collector_android.py
 6. cat the article file
 
-Make more crawlers for sites currently allowing web crawler activity.
+More crawlers is more news.
 
 I will refine it a little but not much. Why? because html changes. And id just like to read the news in my terminal
 or notepad without being data raped. come on.. ad's are enough.
