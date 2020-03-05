@@ -3,6 +3,7 @@ Internet goes down, everyone is told to stay in they're homes. You know where to
 Install required packages:
 pip install bs4
 pip install requests
+etc.
 
 Windows:
 1. On Windows run news_collector.bat
