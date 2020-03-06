@@ -13,18 +13,14 @@ tm_stamp = time_now[:13]
 
 dat_dir = './news_articles/' + tm_stamp + '/'
 distutils.dir_util.mkpath(dat_dir)
+dat_file = dat_dir + '/bbc_news-world_' + tm_stamp + '.txt'
 
 encode = u'\u5E73\u621015\u200e'
 
-href_data = []
 title_data = []
-cat_title_data = []
 article = []
 
-dat_file = dat_dir + '/bbc_news-world_' + tm_stamp + '.txt'
-
 url = 'https://www.bbc.co.uk/news/world'
-
 print('searching', url)
 rHead = requests.get(url)
 data = rHead.text
@@ -32,12 +28,12 @@ soup = BeautifulSoup(data, "html.parser")
 for link in soup.find_all('a'):
     href = link.get('href')
     if href is not None and href.startswith('/news/world-'):
-        cat_title_data.append(href)
+        title_data.append(href)
         # print(href)
 
 i = 0
-for cat_title_datas in cat_title_data:
-    url = cat_title_data[i]
+for title_datas in title_data:
+    url = title_data[i]
     url = 'https://www.bbc.co.uk'+url
     print('searching', url)
     rHead = requests.get(url)

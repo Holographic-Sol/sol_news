@@ -75,6 +75,7 @@ def funk3():
     xcmd_process.append(xcmd_pid)
     print('subprocess PID :', xcmd_pid)
 
+
 def funk4():
     var = crawler[3]
     cmd = 'python ' + var
@@ -133,6 +134,7 @@ def funk9():
     xcmd_pid = xcmd.pid
     xcmd_process.append(xcmd_pid)
     print('subprocess PID :', xcmd_pid)
+
 
 def funk10():
     var = crawler[9]
@@ -222,6 +224,7 @@ def funk18():
     xcmd_pid = xcmd.pid
     xcmd_process.append(xcmd_pid)
     print('subprocess PID :', xcmd_pid)
+
 
 def funk19():
     var = crawler[18]

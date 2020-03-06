@@ -13,6 +13,7 @@ tm_stamp = time_now[:13]
 
 dat_dir = './news_articles/' + tm_stamp + '/'
 distutils.dir_util.mkpath(dat_dir)
+dat_file = dat_dir + '/metro_news-world_' + tm_stamp + '.txt'
 
 date_today = datetime.date.today().strftime('%Y-%m-%d')
 
@@ -20,8 +21,6 @@ encode = u'\u5E73\u621015\u200e'
 
 href_data = []
 title_data = []
-
-dat_file = dat_dir + '/metro_news-world_' + tm_stamp + '.txt'
 
 url = 'https://www.metro.co.uk/news/world'
 print('searching', url)
@@ -31,13 +30,10 @@ soup = BeautifulSoup(data, "html.parser")
 for link in soup.find_all('a'):
     href = link.get('href')
     dt = date_today.replace('-', '/')
-
     search_str_today = 'https://metro.co.uk/'+dt
     search_str_yesterday = 'https://metro.co.uk/'+dt
-
     idx = search_str_yesterday.rfind('/')
     search_str_yesterday = search_str_yesterday[:idx]
-
     if href is not None and href.startswith(search_str_today) or \
             href is not None and href.startswith(search_str_yesterday):
         print(href)
@@ -61,4 +57,3 @@ for href_datas in href_data:
                 fo.write(text+'\n')
             fo.close()
     i += 1
-

@@ -13,6 +13,7 @@ tm_stamp = time_now[:13]
 
 dat_dir = './news_articles/' + tm_stamp + '/'
 distutils.dir_util.mkpath(dat_dir)
+dat_file = dat_dir + '/metro_news-tech_' + tm_stamp + '.txt'
 
 date_today = datetime.date.today().strftime('%Y-%m-%d')
 
@@ -20,8 +21,6 @@ encode = u'\u5E73\u621015\u200e'
 
 href_data = []
 title_data = []
-
-dat_file = dat_dir + '/metro_news-tech_' + tm_stamp + '.txt'
 
 url = 'https://www.metro.co.uk/news/tech'
 print('searching', url)
@@ -58,4 +57,3 @@ for href_datas in href_data:
                 fo.write(text+'\n')
             fo.close()
     i += 1
-

@@ -13,13 +13,12 @@ tm_stamp = time_now[:13]
 
 dat_dir = './news_articles/' + tm_stamp + '/'
 distutils.dir_util.mkpath(dat_dir)
+dat_file = dat_dir + '/techradar_uk-news_' + tm_stamp + '.txt'
 
 encode = u'\u5E73\u621015\u200e'
 
 href_data = []
 title_data = []
-
-dat_file = dat_dir + '/techradar_uk-news_' + tm_stamp + '.txt'
 
 url = 'https://www.techradar.com/uk/news/'
 print('searching', url)
@@ -72,4 +71,3 @@ for href_datas in href_data:
                 fo.write(text+'\n')
             fo.close()
     i += 1
-
